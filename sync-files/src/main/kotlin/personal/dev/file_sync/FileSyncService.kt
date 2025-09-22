@@ -15,11 +15,10 @@ class FileSyncService (
     private val databricksService: DatabricksService
 ) {
     @Value("\${sync-folder}") private lateinit var syncFolder: String
+    @Value("\${volume}") private lateinit var volume: String
+    @Value("\${folder}") private lateinit var folder: String
 
     fun syncFiles() {
-        val volume = "/Volumes/workspace/default/testing"
-        val folder = "upload"
-
         val syncHistoryId = insertSyncHistory()
 
         for (file in File(syncFolder).listFiles()) {
